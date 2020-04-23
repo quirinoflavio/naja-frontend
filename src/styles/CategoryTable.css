@@ -1,11 +1,22 @@
 
 td.ant-table-cell {
-    height: 6vh;
+    height: 5.5vh;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     background-color: lightseagreen;
 }
 
 th.ant-table-cell {
-    height: 8vh;
+    height: 7vh;
+}
+
+.pop-button {
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+
+/* Temporario */
+.reg-cat {
+    display: none;
 }
