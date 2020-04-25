@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Button, Popconfirm } from 'antd';
-import '../styles/CategoryTable.css';
-import { dataSource as data } from '../mock/CategoryTable';
+import '../../styles/CategoryTable.css';
+import { dataSource as data } from '../../mock/CategoryTable';
 import { Link } from 'react-router-dom'
 
 const columns = [

@@ -7,10 +7,12 @@ import {
     useRouteMatch,
     useParams
   } from "react-router-dom";
+import pdata from '../mock/ProductTable';
 import { dataSource, columns } from '../mock/CategoryTable';
 import { Layout } from 'antd';
 import NavBar from '../components/NavBar';
-import CategoryTable from '../components/CategoryTable';
+import CategoryTable from '../components/Category/CategoryTable';
+import ProductTable from '../components/ProductTable';
 import { Button } from 'antd';
 import '../styles/Landing.css';
 
@@ -34,8 +36,20 @@ const Landing = () => {
             </Header>
 
             <Content className="site-body" >
-                {actionBar()}
-                <CategoryTable dataSource={dataSource} columns={columns}/>
+                
+                <Switch>
+                    <Route path="/categories">
+                        {actionBar()}
+                        <CategoryTable dataSource={dataSource} columns={columns}/>
+                    </Route>
+                    <Route path="/TV">
+                        <ProductTable dataSource={pdata} />
+                    </Route>
+                    <Route path="/">
+                        asdsad
+                    </Route>
+                </Switch>
+                
             </Content>
             
             <Footer className='site-footer'>

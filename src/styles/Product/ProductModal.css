@@ -1,0 +1,34 @@
+
+.product-modal {
+    width: fit-content !important;
+}
+
+.product-modal .ant-modal-body {
+    padding: 0;
+}
+
+.product-modal img {
+    padding: 0.7em;
+}
+
+.modal-footer-button {
+    /* float: right; */
+    /* float: right; */
+    margin: 5px;
+}
+
+.modal-footer {
+    text-align: end;
+}
+.product-img-div {
+    text-align: center !important;
+}
+
+.product-img {
+    display: inline-block;
+}
+
+.product-content-div{
+    padding: 1em 1em 0;
+}
+
