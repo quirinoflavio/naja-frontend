@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Card, Typography,Input, InputNumber } from 'antd';
-import '../styles/ProductModal.css';
+import './ProductModal.css';
 
 
 

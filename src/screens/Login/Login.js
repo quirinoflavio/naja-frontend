@@ -1,7 +1,7 @@
 import React from 'react';
 import  GoogleLogin from 'react-google-login'
 import { Card } from 'antd';
-import '../styles/Login.css'
+import './Login.css'
 const responseGoogle = (response) => {
     console.log(response);
 }

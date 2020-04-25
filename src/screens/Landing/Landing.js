@@ -7,14 +7,14 @@ import {
     useRouteMatch,
     useParams
   } from "react-router-dom";
-import pdata from '../mock/ProductTable';
-import { dataSource, columns } from '../mock/CategoryTable';
+import pdata from '../../mock/ProductTable';
+import { dataSource, columns } from '../../mock/CategoryTable';
 import { Layout } from 'antd';
-import NavBar from '../components/NavBar';
-import CategoryTable from '../components/Category/CategoryTable';
-import ProductTable from '../components/ProductTable';
+import NavBar from '../../components/Header/NavBar';
+import CategoryTable from '../../components/Category/CategoryTable';
+import ProductTable from '../../components/Product/ProductTable';
 import { Button } from 'antd';
-import '../styles/Landing.css';
+import './Landing.css';
 
 
 const { Header, Content, Footer } = Layout;

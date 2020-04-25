@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Button, Popconfirm, Popover, Modal } from 'antd';
-import '../styles/ProductTable.css';
+import './ProductTable.css';
 import ProductModal from './ProductModal';
 
 const columns = [

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Button } from  'antd';
-import '../styles/NavBar.css'
-import {logout, loginRedirect, isValidToken} from '../library/UserFunctions';
+import './NavBar.css'
+import {logout, loginRedirect, isValidToken} from '../../library/UserFunctions';
 const FIXEME = 'reSOLva-ME';
 
  
