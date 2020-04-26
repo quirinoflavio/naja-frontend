@@ -63,8 +63,18 @@ export const updateProduct = (product , category)=> fetch(
   }
 )
 
+export const deleteCategory = category => fetch(
+  `${BASE_URL}/categories/${category}`,
+  {
+    method: 'delete',
+    headers: headers,
+  }
+)
 
-
-export const getProduct = id => fetch(
-  //    <<<<<<<<<<<<<<<<<< TODO >>>>>>>>>>>>>>>
+export const deleteProduct = (product, category) => fetch(
+  `${BASE_URL}/categories/${category}/${product}`,
+  {
+    method: 'delete',
+    headers: headers,
+  }
 )

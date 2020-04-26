@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect} from 'react';
 import ProductTable from './ProductTable';
-import { getProductsByCategory, addProduct, updateProduct } from '../../library/utils';
+import { getProductsByCategory, addProduct, updateProduct, deleteProduct } from '../../library/utils';
 import { Button, Modal, Upload, Typography, Input } from 'antd';
 import { useParams } from 'react-router-dom';
 
@@ -13,6 +13,18 @@ const Product = () => {
     const [ price, setPrice ] = useState(NaN);
     const [ loading, setLoading] = useState(false);
     let { category } = useParams();
+
+    const onDelete = (product) => {
+        deleteProduct(product, category).then(response => {
+            if(response.status === 200) {
+                fetchData()
+            }
+            else {
+                console.log(response)
+            }
+        })
+        .catch(error => console.log(error));  
+    }
     
     const submit = (product) => {
         if (product) {
@@ -79,7 +91,7 @@ const Product = () => {
                 
 
             </Modal>
-            <ProductTable submit={submit} dataSource={data} />
+            <ProductTable onDelete={onDelete} submit={submit} dataSource={data} />
         </Fragment>
     )
 }

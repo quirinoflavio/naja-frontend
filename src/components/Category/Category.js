@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect} from 'react';
 import CategoryTable from './CategoryTable';
-import { getCategories, addCategory } from '../../library/utils';
+import { getCategories, addCategory, deleteCategory } from '../../library/utils';
 import { Button, Modal, Typography, Input } from 'antd';
 
 const Category = () => {
@@ -8,6 +8,19 @@ const Category = () => {
     const [ visible, setVisible ] = useState(false);
     const [ newCategory, setNewCategory ] = useState(null);
     const [ loading, setLoading] = useState(false);
+
+
+    const onDelete = (category) => {
+        deleteCategory(category).then(response => {
+            if(response.status === 200) {
+                fetchData()
+            }
+            else {
+                console.log(response)
+            }
+        })
+        .catch(error => console.log(error));  
+    }
 
     const submit = () => {
         addCategory(newCategory).then(response => {
@@ -53,7 +66,7 @@ const Category = () => {
                 <Typography.Title level={3}>Digite o nome da nova categoria: </Typography.Title>
                 <Input onChange={(e) => setNewCategory(e.target.value)}></Input>
             </Modal>
-            <CategoryTable dataSource={data} />
+            <CategoryTable onDelete={onDelete} dataSource={data} />
         </Fragment>
     )
 }
