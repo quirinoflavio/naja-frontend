@@ -78,3 +78,17 @@ export const deleteProduct = (product, category) => fetch(
     headers: headers,
   }
 )
+
+
+export const logout = () => {
+    localStorage.removeItem('usertoken');
+    loginRedirect();
+}
+
+export const loginRedirect = () => {
+    window.location.reload();
+}
+
+export const isValidToken = () => {
+    return true;
+}

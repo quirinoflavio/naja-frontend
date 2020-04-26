@@ -3,11 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useRouteMatch,
-    useParams
   } from "react-router-dom";
-import pdata from '../../mock/ProductTable';
 import { Layout } from 'antd';
 import NavBar from '../../components/Header/NavBar';
 import Category from '../../components/Category/Category';
