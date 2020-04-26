@@ -1,11 +1,10 @@
 export const BASE_URL = 'http://localhost:3003'
 
-
-export const getToken = cookies => cookies && cookies.get('ccc-pharma-token')
-const token = 'senha'
+export const TOKEN = 'complexity_token';
+export const getToken = () => localStorage.getItem(TOKEN);
 
 const headers = {
-    Authorization: token,
+    Authorization: getToken(),
     "Content-Type": "application/json"
 };
 export const getCurrentUser = () => fetch(
@@ -81,7 +80,7 @@ export const deleteProduct = (product, category) => fetch(
 
 
 export const logout = () => {
-    localStorage.removeItem('usertoken');
+    localStorage.removeItem('TOKEN');
     loginRedirect();
 }
 
