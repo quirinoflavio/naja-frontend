@@ -22,9 +22,6 @@ const columns = [
         title: 'Produto',
         dataIndex: 'name',
         key: 'name',
-        // render: (text, record) =>(
-        //  <ProductItem product={record}/>
-        // )
         render: (text, record) => <ProductModal data={record}/> 
     },
   {
@@ -41,12 +38,9 @@ const columns = [
     title: 'Ação',
     dataIndex: 'action',
     key: 'action',
-    render: (text, record) =>
-          
-            <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Categoria?" onConfirm={() => console.log("apagado")}>
-              <a>Apagar</a>
-            </Popconfirm>
-          
+    render: () => ( <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Categoria?" onConfirm={() => console.log("apagado")}>
+                      <a>Apagar</a>
+                    </Popconfirm>) 
   }
 
 ];
@@ -55,10 +49,6 @@ const ProductTable = (props) => {
 
   return (
     <div>
-      <div className='pop-button'>
-        {/* {this.actionBar()} */}
-        <Button> Cadastrar Produto </Button>
-      </div>
       <Table columns={columns} dataSource={props.dataSource} />
     </div>
   );

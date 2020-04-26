@@ -8,26 +8,19 @@ import {
     useParams
   } from "react-router-dom";
 import pdata from '../../mock/ProductTable';
-import { dataSource, columns } from '../../mock/CategoryTable';
 import { Layout } from 'antd';
 import NavBar from '../../components/Header/NavBar';
-import CategoryTable from '../../components/Category/CategoryTable';
-import ProductTable from '../../components/Product/ProductTable';
-import { Button } from 'antd';
+import Category from '../../components/Category/Category';
+import Product from '../../components/Product/Product';
 import './Landing.css';
 
 
 const { Header, Content, Footer } = Layout;
 
-const actionBar = () => {
-    return(
-        <div className='reg-cat'>
-            <Button> Registrar Categoria </Button>
-        </div>
-    );
-}
 
 const Landing = () => {
+    // let { category } = useParams();
+    // console.log(category)
     return (
         <Router>
             <Layout>
@@ -38,12 +31,11 @@ const Landing = () => {
             <Content className="site-body" >
                 
                 <Switch>
-                    <Route path="/categories">
-                        {actionBar()}
-                        <CategoryTable dataSource={dataSource} columns={columns}/>
+                    <Route exact path="/categories/">
+                        <Category/>
                     </Route>
-                    <Route path="/TV">
-                        <ProductTable dataSource={pdata} />
+                    <Route path="/categories/:category">
+                        <Product/>
                     </Route>
                     <Route path="/">
                         asdsad

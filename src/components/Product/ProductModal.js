@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Modal, Button, Card, Typography,Input, InputNumber } from 'antd';
+import { updateProduct, getProductsByCategory} from '../../library/utils';
+import { Modal, Button, Typography,Input } from 'antd';
 import './ProductModal.css';
-
+import { useParams } from 'react-router-dom';
 
 
 const ProductModal = (props) => {
@@ -9,7 +10,8 @@ const ProductModal = (props) => {
   const defaultValue = amount;
   const [showModal, setShowModal] = useState(false);
   const [amountValue, setAmountValue] = useState(defaultValue);
-  
+  let { category } = useParams();
+
   const handleIncrement = () => setAmountValue( amountValue + (1) );
   
   const handleDecrement = () => setAmountValue( amountValue - (1) );
@@ -27,6 +29,19 @@ const ProductModal = (props) => {
     setShowModal(false);
   }
 
+  const handleSubmit = () => {
+    updateProduct({product, amountValue, price}, category).then(response => {
+      if(response.status === 200) {
+          setShowModal(false)
+      }
+      else {
+          console.log(response)
+      }
+  })
+  .catch(error => console.log(error));  
+  }
+
+
   return (
       <div>
         <a type="primary" onClick={handleShowModal}>
@@ -36,7 +51,7 @@ const ProductModal = (props) => {
         <Modal className='product-modal'
           closable= {false}
           visible={showModal}
-          // onOk={this.handleOk}
+          onOk={handleSubmit}
           onCancel={handleCancel}
           >
 

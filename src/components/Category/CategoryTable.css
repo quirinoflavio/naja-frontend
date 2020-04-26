@@ -21,5 +21,6 @@ th.ant-table-cell {
 
 /* Temporario */
 .reg-cat {
-    display: none;
+    text-align: right;
+    margin-bottom: 5px;
 }
