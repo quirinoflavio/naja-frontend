@@ -32,7 +32,7 @@ const columns = [
 const CategoryTable = ( {dataSource} ) => {
   return (
     <div>
-      <Table columns={columns} dataSource={dataSource} />
+      <Table pagination={{showSizeChanger: false}} columns={columns} dataSource={dataSource} />
     </div>
   );
 }

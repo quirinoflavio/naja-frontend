@@ -52,7 +52,6 @@ export const addProduct = ({name, amount, price}, category) => fetch(
   }
 )
 
-//    <<<<<<<<<<<<<<<<<< TODO >>>>>>>>>>>>>>>
 
 
 export const updateProduct = (product , category)=> fetch(
@@ -65,9 +64,7 @@ export const updateProduct = (product , category)=> fetch(
 )
 
 
+
 export const getProduct = id => fetch(
-  `${BASE_URL}/products/${id}`, {
-    method: 'get',
-    headers: headers
-  }
+  //    <<<<<<<<<<<<<<<<<< TODO >>>>>>>>>>>>>>>
 )

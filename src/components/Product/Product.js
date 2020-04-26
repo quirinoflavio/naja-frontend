@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect} from 'react';
 import ProductTable from './ProductTable';
-import { getProductsByCategory, addProduct } from '../../library/utils';
+import { getProductsByCategory, addProduct, updateProduct } from '../../library/utils';
 import { Button, Modal, Upload, Typography, Input } from 'antd';
 import { useParams } from 'react-router-dom';
 
@@ -9,22 +9,33 @@ const Product = () => {
     const [ data, setData ] = useState(null);
     const [ visible, setVisible ] = useState(false);
     const [ name, setName ] = useState('');
-    const [ amount, setAmount] = useState(0);
-    const [ price, setPrice ] = useState(0);
+    const [ amount, setAmount] = useState(NaN);
+    const [ price, setPrice ] = useState(NaN);
     const [ loading, setLoading] = useState(false);
     let { category } = useParams();
-
-    const submit = () => {
-        addProduct({name, amount, price}, category).then(response => {
-            if(response.status === 201) {
-                setVisible(false)
-                fetchData()
-            }
-            else {
-                console.log(response)
-            }
-        })
-        .catch(error => console.log(error));  
+    
+    const submit = (product) => {
+        if (product) {
+            updateProduct(product, category).then(response => {
+                if(response.status === 200) {
+                    fetchData()
+                }else {
+                    console.log(response)
+                }
+            })
+            .catch(error => console.log(error));
+        }else {     
+            addProduct({name, amount, price}, category).then(response => {
+                if(response.status === 201) {
+                    setVisible(false)
+                    fetchData()
+                }
+                else {
+                    console.log(response)
+                }
+            })
+            .catch(error => console.log(error));
+        }     
     }
     
     const fetchData = () => {
@@ -44,6 +55,7 @@ const Product = () => {
     }, [])
 
     return (
+        
         <Fragment>
             <div className='reg-cat'>
                 <Button onClick={() => setVisible(true) }> Registrar Produto </Button>
@@ -51,11 +63,8 @@ const Product = () => {
             <Modal 
                 visible={visible} 
                 onCancel={() => setVisible(false)}
-                onOk={submit}
-                okButtonProps={
-                    {disabled: 
-                    (name == null || name === '') || (price == null || price === '') || (amount == null || amount === '')
-                    }}
+                onOk={() => submit(false)}
+                okButtonProps={{disabled: (price < 0 || isNaN(price)) || (amount < 0 || isNaN(amount)) || (name == null || name === '') }}
                 confirmLoading={loading}>
                 <Upload/>
 
@@ -70,7 +79,7 @@ const Product = () => {
                 
 
             </Modal>
-            <ProductTable dataSource={data} />
+            <ProductTable submit={submit} dataSource={data} />
         </Fragment>
     )
 }

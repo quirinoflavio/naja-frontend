@@ -1,9 +1,15 @@
 import React from 'react';
-import { Table, Button, Popconfirm, Popover, Modal } from 'antd';
+import { Table, Popconfirm, Popover } from 'antd';
 import './ProductTable.css';
 import ProductModal from './ProductModal';
 
-const columns = [
+
+const ProductTable = (props) => {
+
+  const dataSource = props.dataSource;
+
+
+  const columnsConfig = [
     {
         title: 'Foto',
         dataIndex: 'picture',
@@ -22,7 +28,7 @@ const columns = [
         title: 'Produto',
         dataIndex: 'name',
         key: 'name',
-        render: (text, record) => <ProductModal data={record}/> 
+        render: (text, record) => <ProductModal submit={props.submit} data={record}/> 
     },
   {
     title: 'Quantidade',
@@ -45,11 +51,9 @@ const columns = [
 
 ];
 
-const ProductTable = (props) => {
-
   return (
     <div>
-      <Table columns={columns} dataSource={props.dataSource} />
+      <Table pagination={{showSizeChanger: false}} columns={columnsConfig} dataSource={dataSource} />
     </div>
   );
 }
