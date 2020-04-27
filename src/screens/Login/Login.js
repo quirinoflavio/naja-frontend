@@ -13,7 +13,7 @@ const Login = () => {
         <div className="div-cm">
             <Card title="Login" className="login-card">
                 <GoogleLogin className='google-login'
-                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    clientId="902162089319-bh2bqv7p1j2bla0v5hsetc4ti7kpcvr9.apps.googleusercontent.com"
                     buttonText="Login com Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
