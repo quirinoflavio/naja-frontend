@@ -1,6 +1,6 @@
 export const BASE_URL = 'http://localhost:3003'
 
-export const TOKEN = 'complexity_token';
+export const TOKEN = 'naja_token';
 export const getToken = () => localStorage.getItem(TOKEN);
 
 const headers = {
