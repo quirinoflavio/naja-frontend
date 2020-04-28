@@ -3,9 +3,10 @@ import { Table, Popconfirm } from 'antd';
 import './CategoryTable.css';
 import { Link } from 'react-router-dom'
 
-const CategoryTable = ( props ) => {
+const CategoryTable = (props) => {
   const dataSource = props.dataSource;
   const onDelete = props.onDelete;
+
 
   const columns = [
     {
@@ -24,16 +25,16 @@ const CategoryTable = ( props ) => {
       dataIndex: 'action',
       key: 'action',
       render: (text, record) =>
-              <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Categoria?" onConfirm={() => onDelete(record.id)}>
-                <a>Apagar</a>
-              </Popconfirm>       
+        <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Categoria?" onConfirm={() => onDelete(record.id)}>
+          <a>Apagar</a>
+        </Popconfirm>
     }
-  
+
   ];
 
   return (
     <div>
-      <Table pagination={{showSizeChanger: false}} columns={columns} dataSource={dataSource} />
+      <Table pagination={{ showSizeChanger: false }} columns={columns} dataSource={dataSource} />
     </div>
   );
 }

@@ -6,6 +6,13 @@ import ProductModal from './ProductModal';
 
 const ProductTable = (props) => {
 
+
+  const handleRowClassName = ({ quantity }) => {
+    if (quantity === 0) return 'bg-red'
+    else if (quantity < 10) return 'bg-yellow'
+    else return ''
+  }
+
   const dataSource = props.dataSource;
 
 
@@ -53,7 +60,7 @@ const ProductTable = (props) => {
 
   return (
     <div>
-      <Table pagination={{showSizeChanger: false}} columns={columnsConfig} dataSource={dataSource} />
+      <Table rowClassName={handleRowClassName} pagination={{showSizeChanger: false}} columns={columnsConfig} dataSource={dataSource} />
     </div>
   );
 }
