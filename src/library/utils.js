@@ -93,7 +93,7 @@ export const loginRedirect = () => {
 export const isValidToken = async () => {
   const token = getToken();
 
-  const response = await fetch(`${DEV_URL}/private`, {
+  const response = await fetch(`${BASE_URL}/private`, {
     method: 'get',
     mode: 'cors',
     headers: { Authorization: token },
