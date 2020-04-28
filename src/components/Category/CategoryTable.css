@@ -37,6 +37,13 @@ th.ant-table-cell {
 }
 
 .btn-reg-cat {
-    background-color: #318C8B;
+    background-color: #459796;
     border: none;
+    color: #fff
+}
+
+.btn-reg-cat:hover {
+    background-color: #2c7e7d;
+    border: none;
+    color: #fff
 }

@@ -10,16 +10,18 @@ const CategoryTable = (props) => {
 
   const columns = [
     {
+      title: 'ID',
+      dataIndex: 'idCategory',
+      key: 'idCategory',
+      render: (text, record) => record.id
+    },
+    {
       title: 'Categoria',
       dataIndex: 'name',
       key: 'name',
       render: (text, record) => <Link to={`/category/${record.id}`}>{text}</Link>,
     },
-    {
-      title: 'Produtos Únicos',
-      dataIndex: 'unique',
-      key: 'unique',
-    },
+    
     {
       title: 'Ação',
       dataIndex: 'action',
