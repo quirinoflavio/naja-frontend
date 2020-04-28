@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://naja-backend.herokuapp.com';
+export const BASE_URL = 'https://naja-backend.herokuapp.com';
 
 export const DEV_URL = 'http://localhost:3333';
 
