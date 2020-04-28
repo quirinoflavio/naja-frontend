@@ -10,9 +10,9 @@ const CategoryTable = ( props ) => {
   const columns = [
     {
       title: 'Categoria',
-      dataIndex: 'category',
-      key: 'category',
-      render: (text) => <Link to={'/categories/' +text}>{text}</Link>,
+      dataIndex: 'name',
+      key: 'name',
+      render: (text, record) => <Link to={`/category/${record.id}`}>{text}</Link>,
     },
     {
       title: 'Produtos Únicos',
@@ -24,7 +24,7 @@ const CategoryTable = ( props ) => {
       dataIndex: 'action',
       key: 'action',
       render: (text, record) =>
-              <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Categoria?" onConfirm={() => onDelete(record.category)}>
+              <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Categoria?" onConfirm={() => onDelete(record.id)}>
                 <a>Apagar</a>
               </Popconfirm>       
     }

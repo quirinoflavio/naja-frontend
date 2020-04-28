@@ -32,19 +32,19 @@ const ProductTable = (props) => {
     },
   {
     title: 'Quantidade',
-    dataIndex: 'amount',
-    key: 'amount',
+    dataIndex: 'quantity',
+    key: 'quantity',
   },
   {
     title: 'Preço',
-    dataIndex: 'price',
-    key: 'price',
+    dataIndex: 'value',
+    key: 'value',
   },
   {
     title: 'Ação',
     dataIndex: 'action',
     key: 'action',
-    render: (text, record) => ( <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Produto?" onConfirm={() => props.onDelete(record.product)}>
+    render: (text, record) => ( <Popconfirm okText='Sim' cancelText='Cancelar' title="Apagar Produto?" onConfirm={() => props.onDelete(record)}>
                       <a>Apagar</a>
                     </Popconfirm>) 
   }

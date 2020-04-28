@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 
@@ -22,10 +22,11 @@ function beforeUpload(file) {
 }
 
 const UploadImage = (props) => {
-
+    
     const [ loading, setLoading ] = useState(false);
-    const [ imageUrl, setImageUrl] = useState('');
+    const [ imageUrl, setImageUrl] = useState(props.image);
 
+    useEffect(() => { setImageUrl(props.image) }, [props.image])
     const handleChange = info => {
         if (info.file.status === 'uploading') {
             setLoading(true);

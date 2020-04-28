@@ -5,9 +5,9 @@ import './ProductModal.css';
 
 const ProductModal = (props) => {
 
-  const {product, amount, price} = props.data;
+  const {id, picture, idCategory, name, quantity, value} = props.data;
   const [showModal, setShowModal] = useState(false);
-  const [amountValue, setAmountValue] = useState(amount);
+  const [amountValue, setAmountValue] = useState(quantity);
 
   const handleIncrement = () => setAmountValue( amountValue + (1) );
   
@@ -24,12 +24,13 @@ const ProductModal = (props) => {
   }
 
   const handleCancel = () => {
-    setAmountValue(amount);
+    setAmountValue(quantity);
     handleShowModal()
   }
 
   const submit = () => {
-    let p = {product, amountValue, price}
+    let p = {id, idCategory, picture, name, quantity, value}
+    p.quantity = amountValue;
     props.submit(p)
     handleShowModal()
   }
@@ -38,7 +39,7 @@ const ProductModal = (props) => {
   return (
       <div>
         <a type="primary" onClick={handleShowModal}>
-          {product}
+          {name}
         </a>
 
         <Modal className='product-modal'
@@ -51,13 +52,13 @@ const ProductModal = (props) => {
           <div className='product-img-div'>
             <img className='product-img'
                 alt="example"
-                src="https://static.modernbike.com/256/main_2126277790_20190508093424.jpg"
+                src={picture}
               />
           </div>
           
           <div className='product-content-div'>
             <Typography.Text strong>Produto:</Typography.Text>
-            <Input disabled value={product}/>
+            <Input disabled value={name}/>
             <div className='btn-group'>
               <Typography.Text strong>Quantidade:</Typography.Text><br/>
               <Button onClick={handleIncrement}> + </Button>
@@ -65,7 +66,7 @@ const ProductModal = (props) => {
               <Button  onClick={handleDecrement}>-</Button>
             </div>
             <Typography.Text strong>Preço:</Typography.Text>
-            <Input disabled defaultValue={price}/>
+            <Input disabled defaultValue={value}/>
           </div>
         </Modal>
       </div>

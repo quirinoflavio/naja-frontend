@@ -1,7 +1,12 @@
-export const BASE_URL = 'http://localhost:3003'
+export const BASE_URL = 'http://naja-backend.herokuapp.com'
 
 export const TOKEN = 'naja_token';
 export const getToken = () => localStorage.getItem(TOKEN);
+
+const routes = {
+  category: '/category/',
+  product: '/product/', 
+}
 
 const headers = {
     Authorization: getToken(),
@@ -15,8 +20,19 @@ export const getCurrentUser = () => fetch(
   }
 )
 
+
+export const getCategoryById = (id) => fetch(
+  BASE_URL + routes.category + id, 
+    {
+      method: 'get',
+      headers: headers
+    }
+)
+
+
+// ------------------- DONE -------------------------
 export const getCategories = () => fetch(
-    `${BASE_URL}/categories/`,
+    BASE_URL + routes.category,
     {
       method: 'get',
       headers: headers
@@ -24,8 +40,9 @@ export const getCategories = () => fetch(
   )
 
 
-export const getProductsByCategory = category => fetch(
-  `${BASE_URL}/categories/${category}`,
+// ------------------- DONE -------------------------
+export const getProductsByCategory = categoryId => fetch(
+  BASE_URL + routes.category + categoryId,
   {
     method: 'get',
     headers: headers
@@ -33,8 +50,9 @@ export const getProductsByCategory = category => fetch(
 )
 
 
+// ------------------- DONE -------------------------
 export const addCategory = name => fetch(
-  `${BASE_URL}/categories/`,
+  BASE_URL + routes.category,
   {
     method: 'post',
     headers: headers,
@@ -42,36 +60,44 @@ export const addCategory = name => fetch(
   }
 )
 
-export const addProduct = ({name, amount, price}, category) => fetch(
-  `${BASE_URL}/categories/${category}`,
-  {
-    method: 'post',
-    headers: headers,
-    body: JSON.stringify({name, amount, price})
-  }
-)
+
+// -------------- DONE --------------------
+export const addProduct = (product) => {
+  console.log(product)
+  return fetch(
+    BASE_URL + routes.product,
+    {
+      method: 'post',
+      headers: headers,
+      body: JSON.stringify(product)
+    })
+}
 
 
-
-export const updateProduct = (product , category)=> fetch(
-  `${BASE_URL}/categories/${category}`,
+// ======================== DONE ============================
+export const updateProduct = (product)=> {
+  return fetch(
+  BASE_URL + routes.product + product.id,
   {
     method: 'put',
     headers: headers,
-    body: JSON.stringify({product})
-  }
-)
+    body: JSON.stringify(product)
+  }) 
+}
 
-export const deleteCategory = category => fetch(
-  `${BASE_URL}/categories/${category}`,
+
+// ============================ DONE =========================
+export const deleteCategory = categoryId => fetch(
+  BASE_URL + routes.category + categoryId,
   {
     method: 'delete',
     headers: headers,
   }
 )
 
-export const deleteProduct = (product, category) => fetch(
-  `${BASE_URL}/categories/${category}/${product}`,
+// ===================  DONE ==================
+export const deleteProduct = (product) => fetch(
+  BASE_URL + routes.product + product.id,
   {
     method: 'delete',
     headers: headers,
@@ -89,5 +115,12 @@ export const loginRedirect = () => {
 }
 
 export const isValidToken = () => {
-    return false;
+    return true;
+}
+
+
+export const addKey = list => {
+  list.forEach(function (element) {
+    element.key = element.id;
+  });
 }

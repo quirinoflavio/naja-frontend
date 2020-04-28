@@ -12,8 +12,6 @@
 }
 
 .modal-footer-button {
-    /* float: right; */
-    /* float: right; */
     margin: 5px;
 }
 
@@ -26,6 +24,8 @@
 
 .product-img {
     display: inline-block;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 .product-content-div{

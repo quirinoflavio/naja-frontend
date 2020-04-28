@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
   } from "react-router-dom";
 import { Layout } from 'antd';
 import NavBar from '../../components/Header/NavBar';
@@ -15,8 +16,6 @@ const { Header, Content, Footer } = Layout;
 
 
 const Landing = () => {
-    // let { category } = useParams();
-    // console.log(category)
     return (
         <Router>
             <Layout>
@@ -27,14 +26,14 @@ const Landing = () => {
             <Content className="site-body" >
                 
                 <Switch>
-                    <Route exact path="/categories/">
+                    <Route exact path="/category/">
                         <Category/>
                     </Route>
-                    <Route path="/categories/:category">
+                    <Route path="/category/:category">
                         <Product/>
                     </Route>
                     <Route path="/">
-                        asdsad
+                        {<Redirect to='category'/>}
                     </Route>
                 </Switch>
                 

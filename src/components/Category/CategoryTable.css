@@ -1,16 +1,27 @@
+.site-body {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    margin: 0.3em 5em 0 !important;
+}
+
 table {
     table-layout: fixed;
 }
 
+.ant-table-pagination.ant-pagination {
+    margin: 1em
+}
+
 td.ant-table-cell {
-    height: 5.5vh;
+    height: 5vh;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    background-color: lightseagreen;
+    background-color: #fff;
 }
 
 th.ant-table-cell {
-    height: 7vh;
+    height: 6vh;
 }
 
 .pop-button {
@@ -23,4 +34,9 @@ th.ant-table-cell {
 .reg-cat {
     text-align: right;
     margin-bottom: 5px;
+}
+
+.btn-reg-cat {
+    background-color: #318C8B;
+    border: none;
 }

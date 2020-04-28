@@ -19,7 +19,7 @@ const user = () => {
 const logo = () => {
     return (
     <div className='div-logo'>
-        <img className='logo' src='https://dewey.tailorbrands.com/production/brand_version_mockup_image/914/2867363914_d1a06c44-0439-4ecd-9745-b0eb72baf017.png?cb=1587493698'></img>
+        <img className='logo' src='https://dewey.tailorbrands.com/production/brand_version_mockup_image/485/2919481485_8f57b47c-ec69-4d10-8c00-574dddb47a80.png?cb=1588036778'/>
     </div>);
 }
 

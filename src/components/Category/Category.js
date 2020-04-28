@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect} from 'react';
 import CategoryTable from './CategoryTable';
-import { getCategories, addCategory, deleteCategory } from '../../library/utils';
+import { getCategories, addCategory, deleteCategory, addKey } from '../../library/utils';
 import { Button, Modal, Typography, Input } from 'antd';
 
 const Category = () => {
@@ -42,6 +42,7 @@ const Category = () => {
             }
           })
           .then(datajson => {
+            addKey(datajson)
             setData(datajson)
           })
           .catch(error => console.log(error))
@@ -49,13 +50,16 @@ const Category = () => {
 
 
     useEffect(() => {
-        fetchData(setData);
+        fetchData();
     }, [])
+
+    useEffect(() => setNewCategory(''), [visible])
 
     return (
         <Fragment>
             <div className='reg-cat'>
-            <Button onClick={() => setVisible(true) } > Registrar Categoria </Button>
+            <Typography.Title level={4} style={{display: 'inline-block', float: 'left'}}>Categorias</Typography.Title>
+            <Button className='btn-reg-cat' onClick={() => setVisible(true) } > Registrar Categoria </Button>
             </div>
             <Modal 
                 visible={visible} 
@@ -64,7 +68,7 @@ const Category = () => {
                 okButtonProps={{disabled: (newCategory == null || newCategory === '')}}
                 confirmLoading={loading}>
                 <Typography.Title level={3}>Digite o nome da nova categoria: </Typography.Title>
-                <Input onChange={(e) => setNewCategory(e.target.value)}></Input>
+                <Input value={newCategory} onChange={(e) => setNewCategory(e.target.value)}></Input>
             </Modal>
             <CategoryTable onDelete={onDelete} dataSource={data} />
         </Fragment>
